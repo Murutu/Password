@@ -24,4 +24,11 @@ def display_user(cls):
     method that returns class user_list
     '''
     return cls.user_list
-        
+
+
+class Credential:
+    
+    '''
+    class that generates new passwords and saves their information
+    '''
+    credential_list = []
