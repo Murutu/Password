@@ -40,3 +40,58 @@ class Credential:
         self.username = username
         self.email = email
         self.password = password
+
+    def save_credential(self):
+
+        '''
+        save_user method saves user into credentials list
+        '''
+        Credential.credential_list.append(self)
+
+    def delete_credential(self):
+
+        '''
+        method that deletes saved credentials
+        '''
+        Credential.credential_list.remove(self)
+
+    @classmethod
+    def find_by_email(cls,email):
+        '''
+        Method that takes in a email and returns a credential that matches that email.
+        
+        Args:
+            email: email to find 
+        Returns:
+            Credential of person that matches the email.
+            '''
+            
+            for credential in cls.credential_list:
+                if credential.email == email:
+                    return credential
+
+    @classmethod
+    def credential_exists(cls,email):
+        '''
+        Method that checks if a credential exists from the credential list.
+
+        Args:
+            email: email to search if it exists
+        Returns:
+            Boolean: True or False depending if the credential exists
+        '''
+
+        for credential in cls.credential_list:
+            if credential.email == email:
+                return True
+            return False
+
+    @classmethod
+    def display_credentials(cls)
+    '''
+    method that returns class credential_list
+    '''
+    return cls.credential_list                        
+
+
+
