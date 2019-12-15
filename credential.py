@@ -18,4 +18,10 @@ def save_user(self):
     '''
     User.user_list.append(self)
 
-@classmethod        
+@classmethod
+def display_user(cls):
+    '''
+    method that returns class user_list
+    '''
+    return cls.user_list
+        
