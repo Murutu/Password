@@ -51,7 +51,7 @@ def display_user():
     '''
     function that returns all saved users
     '''
-    return User
+    return User.display_user()
 
 def display_credential():
     '''
@@ -60,47 +60,20 @@ def display_credential():
     return Credential
 
 def main():
-    print("Welcome to password locker,please choose the path you would like,thankyou")
+    while True:
+        print("Welcome to password locker,please choose the path you would like,thankyou")
 
-    #while True:
-    print("Use the paths provided: \n ga - create a new user account with user defined password, \n fa - create a new user account with auto-generated password, \n ag - display user accounts, \n x - exit from the credentials list")
+    
+        print("Use the paths provided: \n ga - create a new user account with user defined password, \n fa - create a new user account with auto-generated password, \n ag - display user accounts, \n x - exit from the credentials list")
+        # while True:
+        short_code = input().lower()
 
-    short_code = input().lower()
-
-    if short_code == "ga":
-               print("New user")
-               print("-"*10)
-               print("Enter the site interested in")
-               site = input()
-               print(f"{site}has been created")
-
-               print("First name....")
-               f_name = input()
-
-               print("Last name....")
-               l_name = input()
-
-               print("Email....")
-               email = input()
-
-               print("Username....")
-               username = input()
-
-               print("Enter Password....")
-               password = input()
-
-               save_user(create_user(f_name,l_name,email,password))
-               save_credential(create_credential(username,email,password))
-               print("/n")
-               print(f"A new {site} account by {f_name} {l_name} has successfully been created")
-               print("\n")
-
-    elif short_code == "fa":
+        if short_code == "ga":
                 print("New user")
-                print("-" * 10)
-                print("What site are you interested in?")
+                print("-"*10)
+                print("Enter the site interested in")
                 site = input()
-                print(f"{site}created")
+                print(f"{site}has been created")
 
                 print("First name....")
                 f_name = input()
@@ -111,37 +84,67 @@ def main():
                 print("Email....")
                 email = input()
 
-                print("Enter Username.... Hint: a secure password will be generated for you")
+                print("Username....")
                 username = input()
-                s =  "zqa@deac5894mk=486GGF;;b bhjsm-bds(nbsb)savj78sbah@515GfW()"
-                # passlen = 10
-                password = "".join(random.sample(s,10))
+
+                print("Enter Password....")
+                password = input()
+
                 save_user(create_user(f_name,l_name,email,password))
+                save_credential(create_credential(username,email,password))
                 print("/n")
-                print(f" A new {site} account by {f_name} {l_name} has been successfully created")
-                print(f"The username is {username} and the password is {password}")
+                print(f"A new {site} account by {f_name} {l_name} has successfully been created")
                 print("\n")
 
+        elif short_code == "fa":
+                    print("New user")
+                    print("-" * 10)
+                    print("What site are you interested in?")
+                    site = input()
+                    print(f"{site}created")
 
-    elif short_code == "ag":
-            
-            if display_user():
-                print("Here is a list of all your user accounts")
-                print("\n")
+                    print("First name....")
+                    f_name = input()
+
+                    print("Last name....")
+                    l_name = input()
+
+                    print("Email....")
+                    email = input()
+
+                    print("Enter Username.... Hint: a secure password will be generated for you")
+                    username = input()
+                    s =  "zqa@deac5894mk=486GGF;;b bhjsm-bds(nbsb)savj78sbah@515GfW()"
+                    # passlen = 10
+                    password = "".join(random.sample(s,10))
+                    save_user(create_user(f_name,l_name,email,password))
+                    print("/n")
+                    print(f" A new {site} account by {f_name} {l_name} has been successfully created")
+                    print(f"The username is {username} and the password is {password}")
+                    print("\n")
+
+
+        elif short_code == "ag":
                 
-                for user in display_user():
-                    print(f"{user.first_name} {user.last_name} has an account for {site}")
-                print("\n")
-            else:
-                print("\n")
-                print("You dont seem to have any existing acounts")
-                print("\n")
-                
-    elif short_code == "x":
-                print("Thankyou for viewing your account")
-                
-    else:
-                 print("I did not really get that")
+                if display_user():
+                    print("Here is a list of all your user accounts")
+                    print("\n")
+                    
+                    for user in display_user():
+                        print(f"{user.user_name} {user.password} has an account for {site}")
+                    print("\n")
+                else:
+                    print("\n")
+                    print("You dont seem to have any existing acounts")
+                    print("\n")
+                    break
+                    
+        elif short_code == "x":
+                    print("Thankyou for viewing your account")
+                    break
+                    
+        else:
+                    print("I did not really get that")
 
 if __name__ == "__main__":
     main()
