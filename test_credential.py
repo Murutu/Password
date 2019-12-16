@@ -80,7 +80,7 @@ class TestCredential(unittest.TestCase):
         '''
         teardown method that does clean up after all test have been run
         '''
-        Credential.credential_list[]
+        Credential.credential_list = []
 
     def test_delete_credential(self):
         '''
@@ -98,7 +98,7 @@ class TestCredential(unittest.TestCase):
         Test to check if we can find credential by email and display information
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Murutu","murutu@peter","p100")
+        test_credential = Credential("Murutu","murutu@peter.com","p100")
         test_credential.save_credential()
 
         found_credential= Credential.find_by_email("murutu@peter.com")
@@ -109,8 +109,10 @@ class TestCredential(unittest.TestCase):
         test to check if we can return a boolean if we cannot find the credential.
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Murutu","murutu@peter.com")
-
+        test_credential = Credential("Murutu","murutu@peter.com","p100")
+        
+        credential_exists = Credential.credential_exists("murutu@peter.com")
+        
         self.assertTrue(credential_exists)
 
     def display_credential(self):

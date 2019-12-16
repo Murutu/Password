@@ -13,17 +13,19 @@ class User:
 
     def save_user(self):
 
+
         '''
         save_user method saves user into users list
         '''
-    User.user_list.append(self)
+        User.user_list.append(self)
 
     @classmethod
     def display_user(cls):
 
         '''
         method that returns class user_list
-        '''        
+        ''' 
+        return cls.user_list       
 
   
 
@@ -66,9 +68,9 @@ class Credential:
             Credential of person that matches the email.
             '''
             
-            for credential in cls.credential_list:
-                if credential.email == email:
-                    return credential
+        for credential in cls.credential_list:
+            if credential.email == email:
+                return credential
 
     @classmethod
     def credential_exists(cls,email):
@@ -87,11 +89,12 @@ class Credential:
             return False
 
     @classmethod
-    def display_credentials(cls)
-    '''
-    method that returns class credential_list
-    '''
-    return cls.credential_list                        
+    def display_credentials(cls):
+
+         '''
+        method that returns class credential_list
+         '''
+         return cls.credential_list                        
 
 
 
